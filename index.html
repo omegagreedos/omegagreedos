@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Alive</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+    
+    <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script>
+    $( document ).ready(function() {
+  $('#dif_name_t').click(function(){ 
+    $('#dif_name').trigger('click');
+  });
+});
+    </script>
+    <meta charset="utf-8" name="viewport" content="width=390, initial-scale=1.0, user-scalable=no">
+</head>
+<body>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLScKRB75wx4-qRUwG029bsaus-IKW1zy2E0W_ibueJIqFAGCSQ/formResponse"
+      target="_self"
+      id="bootstrapForm"
+      method="POST">
+
+    <!-- Field type: "choices" id: "230045128" -->
+    
+        <div class="form-element radio-buttons">
+            <span><b>//Дышишь?</b></span>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1912246565" value="Дышу" required>
+                    <span>Дышу</span>
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="entry.1912246565" value="Да" required>
+                    <span>Да</span>
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <!-- Field type: "paragraph" id: "651788603" -->
+    
+        <div class="form-element radio-buttons">
+            <span><b>//Есть что сказать?</b></span>
+            <textarea id="1554202161" name="entry.1554202161" class="form-control" ></textarea>
+        </div>
+    </fieldset>
+
+    <input type="hidden" name="fvv" value="1">
+    <input type="hidden" name="fbzx" value="6744387907035709362">
+    <!--
+        CAVEAT: In multipages (multisection) forms, *pageHistory* field tells to google what sections we've currently completed.
+        This usually starts as "0" for the first page, then "0,1" in the second page... up to "0,1,2..N" in n-th page.
+        Keep this in mind if you plan to change this code to recreate any sort of multipage-feature in your exported form.
+        We're setting this to the total number of pages in this form because we're sending all fields from all the section together.
+    -->
+    <input type="hidden" name="pageHistory" value="0">
+    
+
+
+    <input class="submit" type="submit" value="Отправить">
+</form>
+
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha256-2Pjr1OlpZMY6qesJM68t2v39t+lMLvxwpa8QlRjJroA=" crossorigin="anonymous"></script>
+
+<script>
+$('#bootstrapForm').submit(function (event) {
+    event.preventDefault()
+    var extraData = {}
+    $('#bootstrapForm').ajaxSubmit({
+        data: extraData,
+        dataType: 'jsonp',  // This won't really work. It's just to use a GET instead of a POST to allow cookies from different domain.
+        error: function () {
+            // Submit of form should be successful but JSONP callback will fail because Google Forms
+            // does not support it, so this is handled as a failure.
+            alert('Спасибо, что живой. До связи.')
+            // You can also redirect the user to a custom thank-you page:
+            // window.location = 'http://www.mydomain.com/thankyoupage.html'
+        }
+    })
+
+})
+</script>
+</body>
+</html>
